@@ -4,6 +4,7 @@ import _ from 'lodash';
 import Preloader from './components/Preloader';
 import {loadAllData} from './DataHandling';
 import CountyMap from './components/CountyMap';
+import Histogram from './components/Histogram';
 
 class App extends Component {
   state = {
@@ -58,6 +59,15 @@ class App extends Component {
                      width={500}
                      height={500}
                      zoom={zoom} />
+          <Histogram bins={10}
+                     width={500}
+                     height={500}
+                     x="500"
+                     y="10"
+                     data={filteredSalaries}
+                     axisMargin={83}
+                     bottomMargin={5}
+                     value={d => d.base_salary} />
         </svg>
       </div>
     );
