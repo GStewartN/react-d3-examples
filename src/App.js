@@ -48,7 +48,7 @@ class App extends Component {
     let zoom = null;
 
     return (
-      <div>
+      <div className='container'>
         <svg width="1100" height="500">
           <CountyMap usTopoJson={this.state.usTopoJson}
                      USstateNames={this.state.USstateNames}
