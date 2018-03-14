@@ -6,6 +6,7 @@ import {loadAllData} from './DataHandling';
 import CountyMap from './components/CountyMap';
 import Histogram from './components/Histogram';
 import { Title, Description, GraphDescription } from './components/Meta';
+import MedianLine from './components/MedianLine';
 
 class App extends Component {
   state = {
@@ -52,7 +53,8 @@ class App extends Component {
         county => this.countyValue(county, filteredSalariesMap)
       ).filter(d => !_.isNull(d));
 
-    let zoom = null;
+    let zoom = null,
+      medianHousehold = this.state.medianIncomesByUSState['US'][0].medianIncome;
 
     return (
       <div className='App container'>
@@ -82,6 +84,14 @@ class App extends Component {
                      axisMargin={83}
                      bottomMargin={5}
                      value={d => d.base_salary} />
+          <MedianLine data={filteredSalaries}
+                      x={500}
+                      y={10}
+                      width={600}
+                      height={500}
+                      bottomMargin={5}
+                      median={medianHousehold}
+                      value={d => d.base_salary} />
         </svg>
       </div>
     );
